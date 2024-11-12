@@ -54,7 +54,7 @@ function renderMovies(movieDataArray) {
   let contentHtml = "";
   // console.log(movieDataArray);
   for (let movieObj of movieDataArray) {
-    contentHtml += `
+    content.innerHTML += `
         <div class="title h-36 w-11/12 mx-auto flex gap-4 text-white">
           <div class="poster-wrapper w-1/4">
             <img
@@ -109,7 +109,6 @@ function renderMovies(movieDataArray) {
         <hr class="w-11/12 mx-auto opacity-50" />
         <br />
       `;
-    content.innerHTML = contentHtml;
   }
   console.log(contentHtml);
 }
