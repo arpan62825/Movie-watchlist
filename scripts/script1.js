@@ -8,7 +8,7 @@ document.addEventListener("click", (e) => {
 searchBtn.addEventListener("click", () => {
   const searchBarInput = document.querySelector("#input");
   // console.log(searchBarInput.value);
-  fetch(`http://www.omdbapi.com/?apikey=98ae7670&s=${searchBarInput.value}`)
+  fetch(`https://www.omdbapi.com/?apikey=98ae7670&s=${searchBarInput.value}`)
     .then((res) => res.json())
     .then((data) => {
       // console.log(data.Search);
@@ -23,7 +23,7 @@ searchBtn.addEventListener("click", () => {
 
 const fetchMovieData = async (e) => {
   try {
-    const res = await fetch(`http://www.omdbapi.com/?apikey=98ae7670&t=${e}`);
+    const res = await fetch(`https://www.omdbapi.com/?apikey=98ae7670&t=${e}`);
     const data = await res.json();
     // console.log(data);
     renderMovies(data);
