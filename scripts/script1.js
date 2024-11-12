@@ -8,9 +8,9 @@ const searchBarInput = document.querySelector("#input");
 //   }
 // });
 
-document.addEventListener("click", (e) => {
-  console.log(e.target.dataset.id);
-});
+// document.addEventListener("click", (e) => {
+//   console.log(e.target.dataset.id);
+// });
 
 searchBtn.addEventListener("click", function search() {
   let titleArray = [];
@@ -109,9 +109,9 @@ function renderMovies(movieDataArray) {
         <hr class="w-11/12 mx-auto opacity-50" />
         <br />
       `;
+    content.innerHTML = contentHtml;
   }
   console.log(contentHtml);
-  content.innerHTML = contentHtml;
 }
 // console.log(movieObj);
 
