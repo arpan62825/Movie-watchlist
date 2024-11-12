@@ -4,7 +4,7 @@ const searchBarInput = document.querySelector("#input");
 
 searchBtn.addEventListener("click", function search() {
   let titleArray = [];
-  content.innerHTML = "";
+  content.innerHTML = ""; // Clear previous results before starting a new search
   fetch(`https://www.omdbapi.com/?apikey=98ae7670&s=${searchBarInput.value}`)
     .then((res) => res.json())
     .then((data) => {
@@ -32,7 +32,7 @@ const fetchMovieData = async (titleArray) => {
       const data = await res.json();
       if (data.Response === "True") {
         console.log("Fetched Movie Data:", data);
-        renderMovie(data);
+        renderMovie(data); // Render each movie immediately
       } else {
         console.warn(`Movie data not found for title: ${title}`);
       }
@@ -97,5 +97,5 @@ function renderMovie(movieObj) {
     <hr class="w-11/12 mx-auto opacity-50" />
     <br />
   `;
-  content.insertAdjacentHTML("beforeend", movieHtml);
+  content.insertAdjacentHTML("beforeend", movieHtml); // Append each movie's HTML directly
 }
