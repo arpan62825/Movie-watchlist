@@ -1,12 +1,18 @@
 const searchBtn = document.querySelector("#search-btn");
 const content = document.querySelector(".content");
+const searchBarInput = document.querySelector("#input");
+
+// searchBarInput.addEventListener("keypress", (e) => {
+//   if (e.key === "Enter") {
+//     search();
+//   }
+// });
 
 document.addEventListener("click", (e) => {
   console.log(e.target.dataset.id);
 });
 
-searchBtn.addEventListener("click", () => {
-  const searchBarInput = document.querySelector("#input");
+searchBtn.addEventListener("click", function search() {
   let titleArray = [];
   // console.log(searchBarInput.value);
   fetch(`https://www.omdbapi.com/?apikey=98ae7670&s=${searchBarInput.value}`)
@@ -49,15 +55,15 @@ function renderMovies(movieDataArray) {
   // console.log(movieDataArray);
   for (let movieObj of movieDataArray) {
     contentHtml += `
-        <div class="title h-36 w-11/12 mx-auto flex text-white">
-          <div class="poster-wrapper w-full">
+        <div class="title h-36 w-11/12 mx-auto flex gap-4 text-white">
+          <div class="poster-wrapper w-1/4">
             <img
-              class="h-full"
+              class="h-full w-full"
               src="${movieObj.Poster}"
               alt=""
             />
           </div>
-          <div class="flex flex-col gap-y-3">
+          <div class="flex flex-col gap-y-3 w-3/4">
             <div class="title-rating flex gap-3 items-center text-[15px]">
               <h1 class="font-bold">${movieObj.Title}</h1>
               <div class="rating flex items-center justify-center gap-1">
@@ -75,9 +81,9 @@ function renderMovies(movieDataArray) {
               </div>
             </div>
             <div class="details flex justify-between w-48 text-sm">
-              <p class="text-sm">${movieObj.Year}</p>
-              <p class="text-sm">${movieObj.Runtime}</p>
-              <div class="watchlist flex items-center gap-1 cursor-pointer">
+              <p class="small-text">${movieObj.Year}</p>
+              <p class="small-text">${movieObj.Runtime}</p>
+              <div class="watchlist flex items-center gap-1 cursor-pointer text-sm">
                 <svg
                   class="w-4 h-4"
                   xmlns="http://www.w3.org/2000/svg"
@@ -89,11 +95,11 @@ function renderMovies(movieDataArray) {
                   />
                 </svg>
       
-                <p class="text-xs" data-id="${movieObj.imdbID}">Watchlist</p>
+                <p class="small-text" data-id="${movieObj.imdbID}">Watchlist</p>
               </div>
             </div>
             <div class="plot flex">
-              <p class="opacity-75 text-slate-300 text-xs line-clamp-3">
+              <p class="small-text opacity-75 text-slate-300 text-sm line-clamp-3">
                 ${movieObj.Plot}
               </p>
             </div>
@@ -104,7 +110,7 @@ function renderMovies(movieDataArray) {
         <br />
       `;
   }
-  // console.log(contentHtml);
+  console.log(contentHtml);
   content.innerHTML = contentHtml;
 }
 // console.log(movieObj);
