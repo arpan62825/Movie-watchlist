@@ -12,7 +12,6 @@ searchBtn.addEventListener("click", function search() {
         for (let obj of data.Search) {
           titleArray.push(obj.Title);
         }
-        console.log("Fetched Titles:", titleArray);
         fetchMovieData(titleArray);
       } else {
         console.error("No movies found for this search term.");
@@ -31,7 +30,6 @@ const fetchMovieData = async (titleArray) => {
       );
       const data = await res.json();
       if (data.Response === "True") {
-        console.log("Fetched Movie Data:", data);
         renderMovie(data);
       } else {
         console.warn(`Movie data not found for title: ${title}`);
